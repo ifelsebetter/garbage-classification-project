@@ -1,6 +1,6 @@
 # Garbage Classification Project
 
-This project aims to classify different types of garbage into three categories: glass, organic waste, and plastic. The classification model is trained using deep learning techniques.
+In line with our goals, the primary aim of the project is to promote waste sorting awareness, particularly among children. By targeting this specific age group, we believe that instilling the knowledge and practices of responsible waste management from an early age will lay the foundation for a cleaner and more sustainable future. Our project aspires to empower children to become proactive agents of change in their communities.
 
 # Dataset
 
@@ -23,13 +23,11 @@ To use this project, follow these steps:
 To start training your model, run the following command:
 
 ``` bash
-
 python train.py
 ```
 To test the model, use the following command:
 
 ```bash
-
 python test.py
 ```
 Remember, more data leads to better results. Consider expanding your dataset or collecting more samples to improve the model's performance.
