@@ -83,11 +83,8 @@ lr_scheduler = ReduceLROnPlateau(
     min_lr=1e-6
 )
 
-early_stopping = EarlyStopping(monitor='val_loss', patience=5)
-
-model_checkpoint = ModelCheckpoint('garbage_classification_v1.h5', monitor='val_accuracy', save_best_only=True)
-
-reduce_lr = ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=2)
+early_stopping = EarlyStopping(monitor='loss', patience=5)
+reduce_lr = ReduceLROnPlateau(monitor='loss', factor=0.1, patience=2)
 
 model.fit(
     train_generator,
@@ -95,10 +92,11 @@ model.fit(
     validation_data=validation_generator,
     validation_steps=validation_generator.samples // batch_size,
     epochs=epochs,
-    callbacks=[early_stopping, model_checkpoint, reduce_lr]
+    callbacks=[early_stopping, reduce_lr]
 )
 
-model = tf.keras.models.load_model('garbage_classification.h5')
+# Save the trained model
+model.save('garbage_classification_model.h5')
 
 loss, accuracy = model.evaluate(validation_generator)
 print(f'Validation loss: {loss:.4f}')
