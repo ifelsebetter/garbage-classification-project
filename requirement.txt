@@ -1,3 +1,0 @@
-python = 3.9 or above
-tensorflow
-PLI

@@ -1,39 +1,108 @@
-# Garbage Classification Project
+# Windows Native (Python 3.9 or above)
 
-In line with our goals, the primary aim of the project is to promote waste sorting awareness, particularly among children. By targeting this specific age group, we believe that instilling the knowledge and practices of responsible waste management from an early age will lay the foundation for a cleaner and more sustainable future. Our project aspires to empower children to become proactive agents of change in their communities.
+**Step 1: Install Miniconda**
 
-# Dataset
+Download the latest Miniconda installer for Windows (64-bit) from the link below and run the installer.
 
-The dataset used for training and testing the model is sourced from Kaggle.com. It consists of labeled images of various garbage items, categorized into the three classes mentioned above.
+(Miniconda document Website)[https://docs.conda.io]
+(Miniconda Installer)[https://docs.conda.io/en/latest/miniconda.html]
 
-You can find the dataset used in this project at [kaggle.com](https://www.kaggle.com/datasets/asdasdasasdas/garbage-classification). Make sure to download and organize the dataset into the appropriate folders (train, valid, test) before running the code.
+Window
+- 32bit Miniconda3 Windows 32-bit ([Installer 32bit](https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86.exe))
+- 64bit Miniconda3 Windows 64-bit ([Installer 64bit](https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe))
 
-# Model
+**Step 2: Create and Activate Conda Environment**
 
-The classification model is based on the MobileNetV2 architecture, a lightweight and efficient CNN model. Transfer learning is employed using pre-trained weights from the ImageNet dataset. Data augmentation techniques like rotation, shifting, and flipping are used during training.
-
-# Usage
-
-To use this project, follow these steps:
-
-    Find and download the dataset you want to train.
-    Train your model using the provided code.
-    Test the trained model.
-
-To start training your model, run the following command:
+Open a command prompt or Anaconda prompt and create a new conda environment named "tf" with Python 3.9 by running the following commands:
 
 ```
-python train.py
+conda create --name tf python=3.9
+conda activate tf
 ```
-To test the model, use the following command:
+
+**Step 3: Install Necessary Packages**
+
+Upgrade pip and install TensorFlow and Pillow by running the following commands:
 
 ```
-python test.py
+pip install --upgrade pip
+pip install tensorflow
+pip install pillow
 ```
-Remember, more data leads to better results. Consider expanding your dataset or collecting more samples to improve the model's performance.
 
-# Note
+# Windows with WSL (Python 3.9 or above)
 
-- If you encounter any issues or have trouble finding a suitable dataset, visit [kaggle.com](https://www.kaggle.com), a popular platform for machine learning datasets and competitions, offering a wide range of datasets.
-- Feel free to explore and modify the code to improve the model's performance or adapt it to your specific needs.
-- If you don't know where to start, I have written guidance in "How_to.md".
+**Step 1: Install Miniconda**
+
+Open a WSL terminal and use the following commands to download and run the Miniconda installer for Linux:
+
+```
+curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+```
+
+**Step 2: Create and Activate Conda Environment**
+
+In the WSL terminal, create a new conda environment named "tf" with Python 3.9 and activate it using the following commands:
+
+```
+conda create --name tf python=3.9
+conda activate tf
+```
+
+**Step 3: Install Necessary Packages**
+
+For GPU Support:
+
+```
+conda install cuda -c nvidia/label/cuda-11.8.0
+pip install nvidia-cudnn-cu11==8.6.0.163
+pip install --upgrade pip
+pip install tensorflow==2.12.*
+pip install pillow
+```
+
+Followed by:
+
+```
+CUDNN_PATH=$(dirname $(python -c "import nvidia.cudnn;print(nvidia.cudnn.__file__)"))
+export LD_LIBRARY_PATH=$CONDA_PREFIX/lib/:$CUDNN_PATH/lib:$LD_LIBRARY_PATH
+python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
+```
+
+If you have installed everything correctly, it should display:
+
+```
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+```
+
+Without GPU Support:
+
+```
+pip install --upgrade pip
+pip install tensorflow==2.12.*
+pip install pillow
+```
+
+Verify if TensorFlow is Ready:
+To ensure TensorFlow is installed correctly, run the following command:
+
+```
+python3 -c "import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))"
+```
+
+It should display output like:
+
+```
+tf.Tensor(-992.188, shape=(), dtype=float32)
+```
+
+or
+
+```
+tf.Tensor(108.81939, shape=(), dtype=float32)
+```
+
+The specific number doesn't matter; this command just checks if TensorFlow is installed correctly by generating random numbers.
+
+These steps should help you set up a Conda environment with TensorFlow on both Windows Native and Windows with WSL.
