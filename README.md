@@ -22,20 +22,18 @@ To use this project, follow these steps:
 
 To start training your model, run the following command:
 
-``` bash
+```
 python train.py
 ```
 To test the model, use the following command:
 
-```bash
+```
 python test.py
 ```
 Remember, more data leads to better results. Consider expanding your dataset or collecting more samples to improve the model's performance.
 
 # Note
 
-If you encounter any issues or have trouble finding a suitable dataset, visit [kaggle.com](https://www.kaggle.com). It's a popular platform for machine learning datasets and competitions, offering a wide range of datasets.
-
-Feel free to explore and modify the code to improve the model's performance or adapt it to your specific needs.
-
-This revised note provides a concise overview of the project, focusing on the essential information while maintaining clarity.
+- If you encounter any issues or have trouble finding a suitable dataset, visit [kaggle.com](https://www.kaggle.com), a popular platform for machine learning datasets and competitions, offering a wide range of datasets.
+- Feel free to explore and modify the code to improve the model's performance or adapt it to your specific needs.
+- If you don't know where to start, I have written guidance in "How_to.md".
