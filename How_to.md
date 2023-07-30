@@ -44,7 +44,13 @@ conda install cuda -c nvidia/label/cuda-11.8.0
 pip install nvidia-cudnn-cu11==8.6.0.163
 pip install --upgrade pip
 pip install tensorflow==2.12.*
+CUDNN_PATH=$(dirname $(python -c "import nvidia.cudnn;print(nvidia.cudnn.__file__)"))
+export LD_LIBRARY_PATH=$CONDA_PREFIX/lib/:$CUDNN_PATH/lib:$LD_LIBRARY_PATH
 python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
+```
+If you install it correctly it will display
+```
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
 ```
 
 3.2 **Without GPU Support**:
