@@ -5,25 +5,24 @@ from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLRO
 train_data = 'dataset/train'
 validation_data = 'dataset/valid'
 
-# Change it if you have more class to train
-num_classes = 3
+num_classes = 5
 
 input_size = (224, 224)
 
 batch_size = 32
-epochs = 10
+epochs = 15
 
 # Check for available GPUs
-gpus = tf.config.experimental.list_physical_devices('GPU')
+gpus = tf.config.list_physical_devices('GPU')
 if gpus:
-    try:
-        tf.config.experimental.set_visible_devices(gpus[0], 'GPU')
-        tf.config.experimental.set_memory_growth(gpus[0], True)
-        print("GPU device found. Using GPU for training.")
-    except RuntimeError as e:
-        print(e)
-else:
-    print("No GPU available, using CPU instead.")
+  try:
+    for gpu in gpus:
+      tf.config.experimental.set_memory_growth(gpu, True)
+    logical_gpus = tf.config.list_logical_devices('GPU')
+    print(len(gpus), "Physical GPUs,", len(logical_gpus), "Logical GPUs")
+  except RuntimeError as e:
+    print(e)
+
 
 train_data_generator = ImageDataGenerator(
     rescale=1./255,
@@ -82,8 +81,11 @@ lr_scheduler = ReduceLROnPlateau(
     min_lr=1e-6
 )
 
-early_stopping = EarlyStopping(monitor='loss', patience=5)
-reduce_lr = ReduceLROnPlateau(monitor='loss', factor=0.1, patience=2)
+early_stopping = EarlyStopping(monitor='val_loss', patience=5)
+
+model_checkpoint = ModelCheckpoint('garbage_classification_model.h5', monitor='val_accuracy', save_best_only=True)
+
+reduce_lr = ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=2)
 
 model.fit(
     train_generator,
@@ -91,10 +93,9 @@ model.fit(
     validation_data=validation_generator,
     validation_steps=validation_generator.samples // batch_size,
     epochs=epochs,
-    callbacks=[early_stopping, reduce_lr]
+    callbacks=[early_stopping, model_checkpoint, reduce_lr]
 )
 
-# Save the trained model
 model.save('garbage_classification_model.h5')
 
 loss, accuracy = model.evaluate(validation_generator)
