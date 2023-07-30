@@ -5,6 +5,7 @@
 Download the latest Miniconda installer for Windows (64-bit) from the link below and run the installer.
 
 [Miniconda document Website](https://docs.conda.io)
+
 [Miniconda Installer](https://docs.conda.io/en/latest/miniconda.html)
 
 Window
