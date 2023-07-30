@@ -38,7 +38,7 @@ conda activate tf
 
 Step 3: Install Necessary Packages
 
-3.1 For GPU Support:
+3.1 # For GPU Support:
 ```
 conda install cuda -c nvidia/label/cuda-11.8.0
 pip install nvidia-cudnn-cu11==8.6.0.163
@@ -47,7 +47,7 @@ pip install tensorflow==2.12.*
 python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
 ```
 
-3.2 Without GPU Support:
+3.2 # Without GPU Support:
 ```
 pip install --upgrade pip
 pip install tensorflow==2.12.*
