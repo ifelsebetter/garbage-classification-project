@@ -17,7 +17,6 @@ epochs = 10
 gpus = tf.config.experimental.list_physical_devices('GPU')
 if gpus:
     try:
-        # Set GPU visible and allow memory growth
         tf.config.experimental.set_visible_devices(gpus[0], 'GPU')
         tf.config.experimental.set_memory_growth(gpus[0], True)
         print("GPU device found. Using GPU for training.")
@@ -35,7 +34,7 @@ train_data_generator = ImageDataGenerator(
     zoom_range=0.2,
     horizontal_flip=True,
     vertical_flip=True,
-    brightness_range=[0.8, 1.2],  # Adjust brightness
+    brightness_range=[0.8, 1.2],
     validation_split=0.2
 )
 
