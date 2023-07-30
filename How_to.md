@@ -4,13 +4,13 @@
 
 Download the latest Miniconda installer for Windows (64-bit) from the link below and run the installer.
 
-[Miniconda document Website](https://docs.conda.io)
+**[Miniconda document Website](https://docs.conda.io)**
 
-[Miniconda Installer Page](https://docs.conda.io/en/latest/miniconda.html)
+**[Miniconda Installer Page](https://docs.conda.io/en/latest/miniconda.html)**
 
 Window
-- 32bit Miniconda3 Windows 32-bit ([Installer 32bit](https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86.exe))
-- 64bit Miniconda3 Windows 64-bit ([Installer 64bit](https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe))
+- 32-bit Miniconda3 Windows: ([Installer 32-bit](https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86.exe))
+- 64-bit Miniconda3 Windows: ([Installer 64-bit](https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe))
 
 **Step 2: Create and Activate Conda Environment**
 
