@@ -5,7 +5,7 @@ from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLRO
 train_data = 'dataset/train'
 validation_data = 'dataset/valid'
 
-num_classes = 5
+num_classes = 3
 
 input_size = (224, 224)
 

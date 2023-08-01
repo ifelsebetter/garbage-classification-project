@@ -61,6 +61,7 @@ pip install nvidia-cudnn-cu11==8.6.0.163
 pip install --upgrade pip
 pip install tensorflow==2.12.*
 pip install pillow
+pip install opencv-python
 ```
 
 Followed by:
@@ -83,6 +84,7 @@ Without GPU Support:
 pip install --upgrade pip
 pip install tensorflow==2.12.*
 pip install pillow
+pip install opencv-python
 ```
 
 Verify if TensorFlow is Ready:
