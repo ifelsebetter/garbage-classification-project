@@ -23,12 +23,13 @@ conda activate tf
 
 **Step 3: Install Necessary Packages**
 
-Upgrade pip and install TensorFlow and Pillow by running the following commands:
+Upgrade pip and install TensorFlow library, Pillow library, and Opencv library by running the following commands:
 
 ```
 pip install --upgrade pip
 pip install tensorflow
 pip install pillow
+pip install opencv-python
 ```
 
 # Windows with WSL (Python 3.9 or above)
@@ -53,6 +54,19 @@ conda activate tf
 
 **Step 3: Install Necessary Packages**
 
+1. PLI library
+
+```
+pip install pillow
+```
+
+2. Opencv library
+```
+pip install opencv-python
+```
+
+3. Tensorflow and Keras library
+
 For GPU Support:
 
 ```
@@ -60,8 +74,6 @@ conda install cuda -c nvidia/label/cuda-11.8.0
 pip install nvidia-cudnn-cu11==8.6.0.163
 pip install --upgrade pip
 pip install tensorflow==2.12.*
-pip install pillow
-pip install opencv-python
 ```
 
 Followed by:
@@ -83,8 +95,6 @@ Without GPU Support:
 ```
 pip install --upgrade pip
 pip install tensorflow==2.12.*
-pip install pillow
-pip install opencv-python
 ```
 
 Verify if TensorFlow is Ready:
